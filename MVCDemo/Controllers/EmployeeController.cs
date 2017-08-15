@@ -9,17 +9,25 @@ namespace MVCDemo.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Employee
-        public ActionResult Details()
+        public ActionResult Index(int departmentId)
         {
-            Employee emp = new Employee()
-            {
+            EmployeeContext employeeContext = new EmployeeContext();
+            List<Employee> employees = employeeContext.Employees.Where(emp => emp.de)
+            return View(employees);
+        }
+
+        // GET: Employee
+        public ActionResult Details(int id)
+        {
+            EmployeeContext employeeContext = new EmployeeContext();
+            Employee employee = employeeContext.Employees.Single(emp => emp.EmployeeId == id);
+            /*{
                 EmployeeId = 102,
                 Name = "Sajid",
                 Gender = "Male",
                 City = "Paris"
-            };
-            return View(emp);
+            };*/
+            return View(employee);
         }
     }
 }
