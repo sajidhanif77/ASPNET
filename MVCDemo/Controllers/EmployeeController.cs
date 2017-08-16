@@ -12,7 +12,7 @@ namespace MVCDemo.Controllers
         public ActionResult Index(int departmentId)
         {
             EmployeeContext employeeContext = new EmployeeContext();
-            List<Employee> employees = employeeContext.Employees.Where(emp => emp.de)
+            List<Employee> employees = employeeContext.Employees.Where(emp => emp.Id == departmentId).ToList();
             return View(employees);
         }
 
